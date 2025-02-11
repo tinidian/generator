@@ -3,9 +3,9 @@ import shutil
 from textnode import TextNode, TextType
 
 if os.path.exists("public"):
-    os.rmdir("public")
-os.mkdir("public")
-shutil.copytree("src", "public")
+    shutil.rmtree("public")
+# os.mkdir("public")
+shutil.copytree("static", "public")
 
 
 def main():
