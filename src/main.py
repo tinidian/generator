@@ -1,15 +1,18 @@
 import os
 import shutil
-from textnode import TextNode, TextType
+from page_generator import generate_page
 
-if os.path.exists("public"):
-    shutil.rmtree("public")
-# os.mkdir("public")
-shutil.copytree("static", "public")
 
 
 def main():
-    node = TextNode("This is a text node", TextType.BOLD, "https://www.boot.dev")
-    print(node)
+    if os.path.exists("public"):
+        shutil.rmtree("public")
+    shutil.copytree("static", "public")
+
+    from_path = "content/index.md"
+    template_path = "template.html"
+    dest_path = "public/index.html"
+
+    generate_page(from_path, template_path, dest_path)
 
 main()

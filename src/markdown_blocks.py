@@ -148,3 +148,15 @@ def quote_to_html_node(block):
     content = " ".join(new_lines)
     children = text_to_children(content)
     return ParentNode("blockquote", children)
+
+def extract_title(markdown):
+    blocks = markdown_to_blocks(markdown)
+    title_block = ""
+    for block in blocks:
+        if block.startswith("#"):
+            title_block = block
+            break
+    if title_block == "":
+        raise Exception("no h1 heading")
+    title_block = title_block.replace("#", "").strip()
+    return title_block
