@@ -12,7 +12,7 @@ def generate_page(from_path, template_path, dest_path):
     with open(from_path, 'r') as f:
         source = f.read()
     with open(template_path, 'r') as f:
-        template = ""
+        template = f.read()
 
     title = extract_title(source)
 
