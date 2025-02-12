@@ -1,6 +1,6 @@
 import os
 import shutil
-from page_generator import generate_page
+from page_generator import generate_pages_recursive
 
 
 
@@ -9,10 +9,12 @@ def main():
         shutil.rmtree("public")
     shutil.copytree("static", "public")
 
-    from_path = "content/index.md"
+    from_path = "content"
     template_path = "template.html"
-    dest_path = "public/index.html"
+    dest_path = "public"
 
-    generate_page(from_path, template_path, dest_path)
+    generate_pages_recursive(from_path, template_path, dest_path)
+
+    # generate_page(from_path, template_path, dest_path)
 
 main()
